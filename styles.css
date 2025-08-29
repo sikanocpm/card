@@ -1,0 +1,446 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  /* Cambiado gradiente de rojo a azul */
+  background: linear-gradient(135deg, #1a1a1a 0%, #1b2d3d 50%, #1a1a1a 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #ffffff;
+}
+
+.container {
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+}
+
+.card {
+  background: linear-gradient(145deg, #2a2a2a, #1e1e1e);
+  border-radius: 25px;
+  padding: 30px;
+  /* Cambiado sombras de rojo a azul */
+  box-shadow: 0 20px 40px rgba(0, 100, 200, 0.3), 0 10px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  /* Cambiado borde de rojo a azul */
+  border: 1px solid rgba(0, 100, 200, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  /* Cambiado gradiente de rojo a azul */
+  background: linear-gradient(90deg, transparent, #0064c8, transparent);
+  animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Agregado estilos para botón de descarga de perfil */
+.download-profile-section {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.download-profile-btn {
+  background: linear-gradient(135deg, #0064c8, #0080ff);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 100, 200, 0.3);
+}
+
+.download-profile-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0, 100, 200, 0.4);
+}
+
+.download-profile-btn svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Profile Section */
+.profile-section {
+  text-align: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.profile-image {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 20px;
+  position: relative;
+}
+
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  /* Cambiado borde de rojo a azul */
+  border: 4px solid #0064c8;
+  /* Cambiado sombra de rojo a azul */
+  box-shadow: 0 8px 25px rgba(0, 100, 200, 0.4);
+  transition: all 0.3s ease;
+}
+
+.profile-image:hover img {
+  transform: scale(1.05);
+  /* Cambiado sombra hover de rojo a azul */
+  box-shadow: 0 12px 35px rgba(0, 100, 200, 0.6);
+}
+
+.profile-name {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.verified-badge {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, #1da1f2, #0d8bd9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+.verified-badge svg {
+  width: 16px;
+  height: 16px;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.profile-subtitle {
+  color: #cccccc;
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+/* Section Titles */
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  /* Cambiado color de título de rojo a azul */
+  color: #0064c8;
+  margin-bottom: 20px;
+  text-align: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  /* Cambiado gradiente de rojo a azul */
+  background: linear-gradient(90deg, transparent, #0064c8, transparent);
+}
+
+/* Social Section */
+.social-section {
+  margin-bottom: 30px;
+}
+
+.social-grid {
+  display: grid;
+  /* Cambiado a 3 columnas ya que se removió Discord */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.social-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  background: linear-gradient(145deg, #333333, #2a2a2a);
+  border-radius: 15px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  /* Cambiado gradiente hover de rojo a azul */
+  background: linear-gradient(90deg, transparent, rgba(0, 100, 200, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.social-link:hover::before {
+  left: 100%;
+}
+
+.social-link:hover {
+  transform: translateY(-5px);
+  /* Cambiado sombra hover de rojo a azul */
+  box-shadow: 0 10px 25px rgba(0, 100, 200, 0.3);
+  /* Cambiado color de borde hover de rojo a azul */
+  border-color: #0064c8;
+}
+
+.social-icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.social-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.social-icon.instagram {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+.social-icon.tiktok {
+  background: linear-gradient(45deg, #ff0050, #00f2ea);
+}
+.social-icon.youtube {
+  background: #ff0000;
+}
+.social-icon.discord {
+  background: #5865f2;
+}
+
+.social-link span {
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Links Section */
+.links-section {
+  margin-bottom: 30px;
+}
+
+.links-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.custom-link {
+  display: flex;
+  align-items: center;
+  padding: 18px;
+  background: linear-gradient(145deg, #333333, #2a2a2a);
+  border-radius: 15px;
+  text-decoration: none;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  /* Cambiado gradiente hover de rojo a azul */
+  background: linear-gradient(90deg, transparent, rgba(0, 100, 200, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.custom-link:hover::before {
+  left: 100%;
+}
+
+.custom-link:hover {
+  transform: translateX(5px);
+  /* Cambiado sombra hover de rojo a azul */
+  box-shadow: 0 8px 25px rgba(0, 100, 200, 0.3);
+  /* Cambiado color de borde hover de rojo a azul */
+  border-color: #0064c8;
+}
+
+.link-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+.link-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.custom-link.whatsapp .link-icon {
+  background: #25d366;
+}
+.custom-link.telegram .link-icon {
+  background: #0088cc;
+}
+.custom-link.discord .link-icon {
+  background: #5865f2;
+}
+.custom-link.support .link-icon {
+  background: #ffd700;
+}
+
+.link-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+  color: #ffffff;
+}
+
+.link-content p {
+  font-size: 0.85rem;
+  color: #cccccc;
+  font-weight: 300;
+}
+
+/* Footer */
+.footer {
+  text-align: center;
+  padding-top: 20px;
+  /* Cambiado color de borde de rojo a azul */
+  border-top: 1px solid rgba(0, 100, 200, 0.2);
+}
+
+.footer p {
+  font-size: 0.8rem;
+  color: #888888;
+  font-weight: 300;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  .profile-name {
+    font-size: 1.8rem;
+  }
+
+  .social-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .custom-link {
+    padding: 15px;
+  }
+
+  .link-icon {
+    width: 45px;
+    height: 45px;
+    margin-right: 12px;
+  }
+
+  .link-content h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .profile-image {
+    width: 100px;
+    height: 100px;
+  }
+
+  .profile-name {
+    font-size: 1.6rem;
+  }
+
+  .social-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tooltip */
+.tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.9);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  white-space: nowrap;
+}
+
+.tooltip.show {
+  opacity: 1;
+}
