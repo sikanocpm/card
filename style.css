@@ -156,6 +156,60 @@ body::before {
     box-shadow: 0 0 30px rgba(0, 240, 255, 0.5);
 }
 
+/* Modal Botones */
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.btn-modal {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 15px 30px;
+    background: var(--dark-card);
+    border: 2px solid var(--neon-blue);
+    border-radius: 5px;
+    color: var(--text-primary);
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+}
+
+.btn-modal:hover {
+    background: rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+    transform: scale(1.02);
+}
+
+.btn-modal:last-child {
+    border-color: var(--neon-purple);
+}
+
+.btn-modal:last-child:hover {
+    background: rgba(179, 0, 255, 0.2);
+    box-shadow: 0 0 20px rgba(179, 0, 255, 0.4);
+}
+
+/* Video Modal */
+.video-modal-box {
+    max-width: 700px;
+}
+
+.video-container {
+    margin: 20px 0;
+    border: 2px solid var(--neon-purple);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+}
+
 /* Contenido Principal */
 .main-content {
     display: none;
@@ -438,6 +492,58 @@ body::before {
 }
 
 .contact-icon {
+    font-size: 22px;
+}
+
+/* Sección de Comunidades */
+.community-section {
+    margin-bottom: 60px;
+}
+
+.community-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn-community {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 18px 35px;
+    border-radius: 10px;
+    color: var(--text-primary);
+    text-decoration: none;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.btn-community.whatsapp {
+    background: linear-gradient(135deg, #25d366, #128c7e);
+    box-shadow: 0 0 20px rgba(37, 211, 102, 0.4);
+}
+
+.btn-community.whatsapp:hover {
+    box-shadow: 0 0 30px rgba(37, 211, 102, 0.6);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.btn-community.discord {
+    background: linear-gradient(135deg, #5865f2, #4752c4);
+    box-shadow: 0 0 20px rgba(88, 101, 242, 0.4);
+}
+
+.btn-community.discord:hover {
+    box-shadow: 0 0 30px rgba(88, 101, 242, 0.6);
+    transform: translateY(-3px) scale(1.02);
+}
+
+.community-icon {
     font-size: 22px;
 }
 

@@ -6,6 +6,65 @@ document.addEventListener('DOMContentLoaded', function() {
     const mainContent = document.getElementById('mainContent');
     const particlesContainer = document.getElementById('particles');
 
+    // Elementos del Modal Tutorial
+    const scriptRecienteBtn = document.getElementById('scriptRecienteBtn');
+    const tutorialModal = document.getElementById('tutorialModal');
+    const btnNoSe = document.getElementById('btnNoSe');
+    const btnSiSe = document.getElementById('btnSiSe');
+    
+    // Elementos del Modal Video
+    const videoModal = document.getElementById('videoModal');
+    const tutorialVideo = document.getElementById('tutorialVideo');
+    const videoEndMessage = document.getElementById('videoEndMessage');
+    const videoEndButtons = document.getElementById('videoEndButtons');
+    const btnEntendi = document.getElementById('btnEntendi');
+    const btnRepetir = document.getElementById('btnRepetir');
+    
+    // Link del script
+    const scriptLink = 'https://mega.nz/file/ZBFEzTIL#N4ltz3h2IpPBwgbyvw34t_gb4_xmR7dmYX1YFEFKwOM';
+
+    // Evento para el boton SCRIPT RECIENTE
+    scriptRecienteBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        tutorialModal.classList.remove('hidden');
+    });
+
+    // Si el usuario no sabe ejecutar, mostrar video
+    btnNoSe.addEventListener('click', function() {
+        tutorialModal.classList.add('hidden');
+        videoModal.classList.remove('hidden');
+        tutorialVideo.play();
+    });
+
+    // Si el usuario sabe ejecutar, ir al link
+    btnSiSe.addEventListener('click', function() {
+        tutorialModal.classList.add('hidden');
+        window.open(scriptLink, '_blank');
+    });
+
+    // Cuando el video termina, mostrar opciones
+    tutorialVideo.addEventListener('ended', function() {
+        videoEndMessage.style.display = 'block';
+        videoEndButtons.style.display = 'flex';
+    });
+
+    // Si el usuario entendio, ir al link
+    btnEntendi.addEventListener('click', function() {
+        videoModal.classList.add('hidden');
+        videoEndMessage.style.display = 'none';
+        videoEndButtons.style.display = 'none';
+        tutorialVideo.currentTime = 0;
+        window.open(scriptLink, '_blank');
+    });
+
+    // Si el usuario quiere repetir, reiniciar video
+    btnRepetir.addEventListener('click', function() {
+        videoEndMessage.style.display = 'none';
+        videoEndButtons.style.display = 'none';
+        tutorialVideo.currentTime = 0;
+        tutorialVideo.play();
+    });
+
     // Función para cerrar el modal de advertencia
     function closeWarningModal() {
         warningModal.classList.add('hidden');

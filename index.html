@@ -41,9 +41,24 @@
                     <span class="btn-icon">&#9660;</span>
                     <span class="btn-text">ESPACIO VIRTUAL</span>
                 </a>
-                <a href="#" class="btn-download">
+                <a href="#" class="btn-download" id="scriptRecienteBtn">
                     <span class="btn-icon">&#9660;</span>
                     <span class="btn-text">SCRIPT RECIENTE</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Comunidades -->
+        <section class="community-section">
+            <h2 class="section-title">COMUNIDADES</h2>
+            <div class="community-buttons">
+                <a href="https://chat.whatsapp.com/FGEPYw5jagYJGhZpxQrkPF" target="_blank" class="btn-community whatsapp">
+                    <span class="community-icon">&#128172;</span>
+                    WhatsApp
+                </a>
+                <a href="https://discord.gg/FhVfKN4KNm" target="_blank" class="btn-community discord">
+                    <span class="community-icon">&#127918;</span>
+                    Discord
                 </a>
             </div>
         </section>
@@ -64,6 +79,37 @@
             <div class="footer-line"></div>
         </footer>
     </main>
+
+    <!-- Modal Tutorial -->
+    <div class="modal-overlay hidden" id="tutorialModal">
+        <div class="modal-box">
+            <div class="modal-icon">&#63;</div>
+            <h2 class="modal-title">NO SABES EJECUTAR UN SCRIPT?</h2>
+            <p class="modal-text">VE ESTE TUTORIAL!</p>
+            <div class="modal-buttons">
+                <button class="btn-modal" id="btnNoSe">Si</button>
+                <button class="btn-modal" id="btnSiSe">Se como ejecutarlo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Video Tutorial -->
+    <div class="modal-overlay hidden" id="videoModal">
+        <div class="modal-box video-modal-box">
+            <h2 class="modal-title">TUTORIAL</h2>
+            <div class="video-container">
+                <video id="tutorialVideo" controls>
+                    <source src="tutorial-ejecutar-script.mp4" type="video/mp4">
+                    Tu navegador no soporta el video.
+                </video>
+            </div>
+            <p class="modal-text" id="videoEndMessage" style="display: none;">Entendiste el video?</p>
+            <div class="modal-buttons" id="videoEndButtons" style="display: none;">
+                <button class="btn-modal" id="btnEntendi">Entendi</button>
+                <button class="btn-modal" id="btnRepetir">Repetir</button>
+            </div>
+        </div>
+    </div>
 
     <!-- Partículas de fondo -->
     <div class="particles" id="particles"></div>
