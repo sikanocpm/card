@@ -1,175 +1,240 @@
-// Esperar a que el DOM esté completamente cargado
+// ========================================
+// SIKAN - ELEGANT LANDING PAGE
+// Multi-language Support
+// ========================================
+
+// Translations
+const translations = {
+    es: {
+        warning_title: "¡ADVERTENCIA!",
+        warning_text: "El uso de archivos y scripts mostrados aquí es bajo tu propia responsabilidad.",
+        enter_button: "ENTRAR",
+        subtitle: "Plataforma de Acceso",
+        downloads: "Descargas",
+        sikanus_gg: "SIKANUS GG",
+        virtual_space: "Espacio Virtual",
+        recent_script: "Script Reciente",
+        services: "💎 Compra de Servicios 💎",
+        services_desc: "Monedas, Dinero, Carros Premium, etc.",
+        communities: "Comunidades",
+        whatsapp_group: "WhatsApp",
+        discord_group: "Discord",
+        social: "Redes Sociales",
+        footer: "© 2025 SIKANUS | Acceso Restringido"
+    },
+    en: {
+        warning_title: "WARNING!",
+        warning_text: "The use of files and scripts shown here is at your own risk.",
+        enter_button: "ENTER",
+        subtitle: "Access Platform",
+        downloads: "Downloads",
+        sikanus_gg: "SIKANUS GG",
+        virtual_space: "Virtual Space",
+        recent_script: "Recent Script",
+        services: "💎 Service Purchase 💎",
+        services_desc: "Coins, Money, Premium Cars, etc.",
+        communities: "Communities",
+        whatsapp_group: "WhatsApp",
+        discord_group: "Discord",
+        social: "Social Media",
+        footer: "© 2025 SIKANUS | Restricted Access"
+    },
+    "pt-br": {
+        warning_title: "AVISO!",
+        warning_text: "O uso de arquivos e scripts mostrados aqui é por sua conta e risco.",
+        enter_button: "ENTRAR",
+        subtitle: "Plataforma de Acesso",
+        downloads: "Downloads",
+        sikanus_gg: "SIKANUS GG",
+        virtual_space: "Espaço Virtual",
+        recent_script: "Script Recente",
+        services: "💎 Compra de Serviços 💎",
+        services_desc: "Moedas, Dinheiro, Carros Premium, etc.",
+        communities: "Comunidades",
+        whatsapp_group: "WhatsApp",
+        discord_group: "Discord",
+        social: "Redes Sociais",
+        footer: "© 2025 SIKANUS | Acesso Restrito"
+    },
+    "pt-pt": {
+        warning_title: "AVISO!",
+        warning_text: "O uso de ficheiros e scripts mostrados aqui é da sua responsabilidade.",
+        enter_button: "ENTRAR",
+        subtitle: "Plataforma de Acesso",
+        downloads: "Downloads",
+        sikanus_gg: "SIKANUS GG",
+        virtual_space: "Espaço Virtual",
+        recent_script: "Script Recente",
+        services: "💎 Compra de Serviços 💎",
+        services_desc: "Moedas, Dinheiro, Carros Premium, etc.",
+        communities: "Comunidades",
+        whatsapp_group: "WhatsApp",
+        discord_group: "Discord",
+        social: "Redes Sociais",
+        footer: "© 2025 SIKANUS | Acesso Restrito"
+    },
+    ru: {
+        warning_title: "ВНИМАНИЕ!",
+        warning_text: "Использование файлов и скриптов, показанных здесь, осуществляется на ваш риск.",
+        enter_button: "ВОЙТИ",
+        subtitle: "Платформа доступа",
+        downloads: "Загрузки",
+        sikanus_gg: "SIKANUS GG",
+        virtual_space: "Виртуальное пространство",
+        recent_script: "Недавний скрипт",
+        services: "💎 Покупка услуг 💎",
+        services_desc: "Монеты, Деньги, Премиум-автомобили и т.д.",
+        communities: "Сообщества",
+        whatsapp_group: "WhatsApp",
+        discord_group: "Discord",
+        social: "Социальные сети",
+        footer: "© 2025 SIKANUS | Ограниченный доступ"
+    }
+};
+
+// Variables globales
+let currentLanguage = 'es';
+
+// Initialize
 document.addEventListener('DOMContentLoaded', function() {
     // Elementos del DOM
-    const warningModal = document.getElementById('warningModal');
-    const enterBtn = document.getElementById('enterBtn');
-    const mainContent = document.getElementById('mainContent');
-    const particlesContainer = document.getElementById('particles');
+    const warningModal = document.getElementById('warning-modal');
+    const enterButton = document.getElementById('enter-btn');
+    const mainContent = document.getElementById('main-content');
+    const langButtons = document.querySelectorAll('.lang-btn');
 
-    // Elementos del Modal Tutorial
-    const scriptRecienteBtn = document.getElementById('scriptRecienteBtn');
-    const tutorialModal = document.getElementById('tutorialModal');
-    const btnNoSe = document.getElementById('btnNoSe');
-    const btnSiSe = document.getElementById('btnSiSe');
+    // ========================================
+    // SISTEMA DE IDIOMAS
+    // ========================================
     
-    // Elementos del Modal Video
-    const videoModal = document.getElementById('videoModal');
-    const tutorialVideo = document.getElementById('tutorialVideo');
-    const videoEndMessage = document.getElementById('videoEndMessage');
-    const videoEndButtons = document.getElementById('videoEndButtons');
-    const btnEntendi = document.getElementById('btnEntendi');
-    const btnRepetir = document.getElementById('btnRepetir');
-    
-    // Link del script
-    const scriptLink = 'https://mega.nz/file/ZBFEzTIL#N4ltz3h2IpPBwgbyvw34t_gb4_xmR7dmYX1YFEFKwOM';
-
-    // Evento para el boton SCRIPT RECIENTE
-    scriptRecienteBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        tutorialModal.classList.remove('hidden');
-    });
-
-    // Si el usuario no sabe ejecutar, mostrar video
-    btnNoSe.addEventListener('click', function() {
-        tutorialModal.classList.add('hidden');
-        videoModal.classList.remove('hidden');
-        tutorialVideo.play();
-    });
-
-    // Si el usuario sabe ejecutar, ir al link
-    btnSiSe.addEventListener('click', function() {
-        tutorialModal.classList.add('hidden');
-        window.open(scriptLink, '_blank');
-    });
-
-    // Cuando el video termina, mostrar opciones
-    tutorialVideo.addEventListener('ended', function() {
-        videoEndMessage.style.display = 'block';
-        videoEndButtons.style.display = 'flex';
-    });
-
-    // Si el usuario entendio, ir al link
-    btnEntendi.addEventListener('click', function() {
-        videoModal.classList.add('hidden');
-        videoEndMessage.style.display = 'none';
-        videoEndButtons.style.display = 'none';
-        tutorialVideo.currentTime = 0;
-        window.open(scriptLink, '_blank');
-    });
-
-    // Si el usuario quiere repetir, reiniciar video
-    btnRepetir.addEventListener('click', function() {
-        videoEndMessage.style.display = 'none';
-        videoEndButtons.style.display = 'none';
-        tutorialVideo.currentTime = 0;
-        tutorialVideo.play();
-    });
-
-    // Función para cerrar el modal de advertencia
-    function closeWarningModal() {
-        warningModal.classList.add('hidden');
-        mainContent.classList.add('visible');
-        createParticles();
+    /**
+     * Actualiza el idioma de la página
+     */
+    function changeLanguage(lang) {
+        currentLanguage = lang;
+        
+        // Actualizar todos los elementos con atributo data-i18n
+        const elements = document.querySelectorAll('[data-i18n]');
+        elements.forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+        
+        // Actualizar clase activa en botones de idioma
+        langButtons.forEach(btn => {
+            btn.classList.remove('active');
+            if (btn.getAttribute('data-lang') === lang) {
+                btn.classList.add('active');
+            }
+        });
+        
+        // Guardar preferencia de idioma
+        localStorage.setItem('sikan-language', lang);
     }
 
-    // Event listener para el botón de entrar
-    enterBtn.addEventListener('click', closeWarningModal);
+    /**
+     * Carga el idioma guardado o usa el idioma del navegador
+     */
+    function loadLanguagePreference() {
+        // Verificar si hay idioma guardado
+        const saved = localStorage.getItem('sikan-language');
+        if (saved && translations[saved]) {
+            changeLanguage(saved);
+            return;
+        }
 
-    // También permitir cerrar con la tecla Enter
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' && !warningModal.classList.contains('hidden')) {
+        // Intentar usar el idioma del navegador
+        const browserLang = navigator.language.toLowerCase();
+        if (translations[browserLang]) {
+            changeLanguage(browserLang);
+        } else if (browserLang.includes('pt')) {
+            // Para portugués, usar pt-br como default
+            changeLanguage('pt-br');
+        } else if (translations[browserLang.split('-')[0]]) {
+            // Usar solo el código de país (ej: 'en' de 'en-US')
+            changeLanguage(browserLang.split('-')[0]);
+        } else {
+            // Default a español
+            changeLanguage('es');
+        }
+    }
+
+    // Agregar event listeners a botones de idioma
+    langButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const lang = this.getAttribute('data-lang');
+            changeLanguage(lang);
+        });
+    });
+
+    // ========================================
+    // FUNCIONALIDAD DEL MODAL DE ADVERTENCIA
+    // ========================================
+    
+    /**
+     * Cierra el modal de advertencia y muestra el contenido principal
+     */
+    function closeWarningModal() {
+        warningModal.style.transition = 'opacity 0.4s ease';
+        warningModal.style.opacity = '0';
+        
+        setTimeout(function() {
+            warningModal.classList.add('hidden');
+            mainContent.classList.remove('hidden');
+            
+            // Guardar que el usuario aceptó la advertencia
+            localStorage.setItem('sikan-accepted', 'true');
+        }, 400);
+    }
+
+    // Event listener para el botón ENTRAR
+    if (enterButton) {
+        enterButton.addEventListener('click', closeWarningModal);
+    }
+
+    // Permitir cerrar con la tecla Enter
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter' && !warningModal.classList.contains('hidden')) {
             closeWarningModal();
         }
     });
 
-    // Función para crear partículas de fondo
-    function createParticles() {
-        const colors = ['#00f0ff', '#b300ff', '#ff00aa'];
-        
-        for (let i = 0; i < 30; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            
-            // Posición aleatoria
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            
-            // Color aleatorio
-            particle.style.background = colors[Math.floor(Math.random() * colors.length)];
-            
-            // Tamaño aleatorio
-            const size = Math.random() * 4 + 2;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            
-            // Duración de animación aleatoria
-            particle.style.animationDuration = (Math.random() * 20 + 10) + 's';
-            particle.style.animationDelay = (Math.random() * 10) + 's';
-            
-            particlesContainer.appendChild(particle);
-        }
-    }
+    // Cargar preferencia de idioma e iniciar
+    loadLanguagePreference();
 
-    // Efecto de typing para el subtítulo (opcional)
-    function typeEffect(element, text, speed) {
-        let i = 0;
-        element.textContent = '';
-        
-        function type() {
-            if (i < text.length) {
-                element.textContent += text.charAt(i);
-                i++;
-                setTimeout(type, speed);
-            }
-        }
-        
-        type();
-    }
+    // Verificar si ya aceptó la advertencia (opcional)
+    // Descomentar para recordar si el usuario aceptó anteriormente
+    // if (localStorage.getItem('sikan-accepted') === 'true') {
+    //     closeWarningModal();
+    // }
 
-    // Añadir efecto hover con sonido visual a los botones
-    const allButtons = document.querySelectorAll('.btn-download, .btn-contact, .btn-social');
+    // ========================================
+    // EFECTOS DE INTERACCIÓN
+    // ========================================
     
-    allButtons.forEach(button => {
+    /**
+     * Efecto de hover suave en botones
+     */
+    const allButtons = document.querySelectorAll('.download-btn, .contact-btn, .social-btn, .enter-button');
+    
+    allButtons.forEach(function(button) {
         button.addEventListener('mouseenter', function() {
-            this.style.transition = 'all 0.3s ease';
-        });
-    });
-
-    // Efecto de scroll suave para enlaces internos
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth'
-                });
+            // Agregar efecto de escala suave
+            if (!this.classList.contains('lang-btn')) {
+                this.style.transition = 'all 0.3s ease';
             }
         });
     });
 
-    // Efecto parallax suave en scroll
-    let ticking = false;
+    // ========================================
+    // SCROLL SMOOTH Y ANIMACIONES
+    // ========================================
     
-    window.addEventListener('scroll', function() {
-        if (!ticking) {
-            window.requestAnimationFrame(function() {
-                const scrolled = window.pageYOffset;
-                const particles = document.querySelectorAll('.particle');
-                
-                particles.forEach((particle, index) => {
-                    const speed = (index % 3 + 1) * 0.1;
-                    particle.style.transform = `translateY(${scrolled * speed}px)`;
-                });
-                
-                ticking = false;
-            });
-            
-            ticking = true;
-        }
-    });
-
-    // Detectar cuando los elementos entran en viewport para animaciones
+    /**
+     * Observador de intersección para animaciones en scroll
+     */
     const observerOptions = {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
@@ -184,12 +249,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
 
-    // Observar secciones para animaciones de entrada
-    const sections = document.querySelectorAll('section');
+    // Aplicar observer a secciones
+    const sections = document.querySelectorAll('.download-section, .services-section, .contact-section, .social-section');
     sections.forEach(section => {
         section.style.opacity = '0';
-        section.style.transform = 'translateY(30px)';
-        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        section.style.transform = 'translateY(20px)';
+        section.style.transition = 'all 0.6s ease';
         observer.observe(section);
     });
+
+    // ========================================
+    // CONSOLE MESSAGE
+    // ========================================
+    console.log('%c🚀 SIKAN - Access Platform Loaded', 'color: #ffffff; font-size: 16px; font-weight: bold;');
+    console.log('%cElegant & Minimalist Design', 'color: #b0b0b0; font-size: 12px;');
 });
+
+// ========================================
+// UTILIDADES GLOBALES
+// ========================================
+
+/**
+ * Función auxiliar para cambiar idioma desde consola
+ */
+window.changeSikanLanguage = function(lang) {
+    if (translations[lang]) {
+        const buttons = document.querySelectorAll('[data-lang="' + lang + '"]');
+        if (buttons.length > 0) {
+            buttons[0].click();
+            console.log('Idioma cambiado a: ' + lang);
+        }
+    } else {
+        console.log('Idioma no disponible. Idiomas disponibles: es, en, pt-br, pt-pt, ru');
+    }
+};
